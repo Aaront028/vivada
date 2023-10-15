@@ -27,7 +27,7 @@ Welcome to this repository! It's configured with a foundational template and a f
       - environment.prod.ts
       - environment.staging.ts
       - environment.dev.ts
-  <pre>
+  </pre>
 
 4. **Configure Environment Files:**
 - Open each `environment.ts` file and configure the settings specific to its branch.
