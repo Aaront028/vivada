@@ -1,7 +1,39 @@
 # VivadaUi
 Welcome to this repository! It's configured with a foundational template and a functional API connected to a GraphQL test dataset. The implementation includes comprehensive CRUD (Create, Read, Update, Delete) functionality with placeholder details. The codebase incorporates a basic model and ngxs setup, featuring simulated contact data, payload, and states. The app.component.html file includes a simple call to list contact names. Please note that this setup currently lacks any styling, but the essential files such as app.module.ts, graphql.module.ts, and the environment folder are all configured and ready to go.
 
-## Environment variables setup
+# Set Up Environment Files
+
+# Environment variables setup
+1. **Create the Environments Folder:**
+- Inside the `app` folder of your project, create a new folder named `environments`.
+
+2. **Generate Environment Files:**
+  - For each branch or environment, create a corresponding `environment.ts` file.
+    - `environment.prod.ts` for the main branch (production).
+    - `environment.staging.ts` for the staging branch.
+    - `environment.dev.ts` for other development branches.
+
+3. **Folder Structure:**
+  - Your folder structure should look like this:
+
+  <pre>
+    /app
+    /model
+    /services
+    /shared
+    /state
+    /assets
+    /environments
+      - environment.prod.ts
+      - environment.staging.ts
+      - environment.dev.ts
+  <pre>
+
+4. **Configure Environment Files:**
+- Open each `environment.ts` file and configure the settings specific to its branch.
+
+5. **Automatic Switching:**
+By following these steps, you'll have a well-organized environments folder with dedicated environment files for each branch.
 
 # Angular Environment Setup
 
