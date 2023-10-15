@@ -5,10 +5,13 @@ import { ApolloClientOptions, InMemoryCache, split } from '@apollo/client/core';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { HttpHeaders } from '@angular/common/http';
-import { environment } from '../environments/environment.local';
+import { environment } from '../environments/environment';
+
 
 const uri = environment.apiUrl;
 const adminSecret = environment.hasuraAdminSecret;
+
+console.log("URI",uri);
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   // Create HttpHeaders
