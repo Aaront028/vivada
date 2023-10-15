@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, LOCALE_ID, Inject } from '@angular/core';
 import { Contact } from './model/contact.model';
 import { GraphqlService } from './services/graphql.service';
 import { Observable } from 'rxjs';
+import { LanguageService } from './services/language.service';
 
 @Component({
   selector: 'app-root',
@@ -18,8 +19,13 @@ export class AppComponent implements OnInit {
 
   contacts: Contact[] = [];
 
-  constructor(private graphqlService: GraphqlService) {}
-
+ constructor(
+    @Inject(LOCALE_ID) private locale: string,
+    private languageService: LanguageService,
+    private graphqlService: GraphqlService
+  ) {
+    this.languageService.setCurrentLanguage(locale);
+  }
 
   ngOnInit(): void {
     this.data$ = this.graphqlService.getSomeData();
