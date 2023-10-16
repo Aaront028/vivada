@@ -5,12 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { GraphQLModule } from './graphql.module'; 
 import { AppState } from './state/app.state'; 
 import { NgxsModule } from '@ngxs/store';
-import { GraphqlService } from './services/graphql.service';
+import { GraphqlService } from './shared/services/graphql.service';
+
+//language imports
 import { LOCALE_ID} from '@angular/core';
 import { registerLocaleData } from '@angular/common';
-import { LanguageService } from './services/language.service';
-import { TranslatePipe } from './pipes/translate.pipe';
-
+import { LanguageService } from './shared/services/language.service';
+import { TranslatePipe } from './shared/pipes/translate.pipe';
 import localeEn from '@angular/common/locales/en';
 import localeHi from '@angular/common/locales/hi';
 

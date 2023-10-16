@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, LOCALE_ID, Inject } from '@angular/core';
-import { Contact } from './model/contact.model';
-import { GraphqlService } from './services/graphql.service';
+import { Contact } from './shared/model/contact.model';
+import { GraphqlService } from './shared/services/graphql.service';
 import { Observable } from 'rxjs';
-import { LanguageService } from './services/language.service';
+import { LanguageService } from './shared/services/language.service';
 
 @Component({
   selector: 'app-root',

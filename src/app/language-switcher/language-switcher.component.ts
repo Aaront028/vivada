@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LanguageService } from '../services/language.service';
+import { LanguageService } from '../shared/services/language.service';
 @Component({
   selector: 'app-language-switcher',
   templateUrl: './language-switcher.component.html',
