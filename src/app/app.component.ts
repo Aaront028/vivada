@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Contact } from './model/contact.model';
 import { GraphqlService } from './services/graphql.service';
 import { Observable } from 'rxjs';
+import { KeycloakService } from 'keycloak-angular';
 
 @Component({
   selector: 'app-root',
@@ -19,9 +20,22 @@ export class AppComponent implements OnInit {
   contacts: Contact[] = [];
   keycloak: any;
 
-  constructor(private graphqlService: GraphqlService) {}
+  constructor(
+    private graphqlService: GraphqlService,
+    public keycloakService: KeycloakService
+    ) {}
 
+    login() {
+      this.keycloakService.login();
+    }
 
+    logout() {
+      this.keycloakService.logout();
+    }
+
+    isLoggedIn() {
+      return this.keycloakService.isLoggedIn();
+    }
   ngOnInit(): void {
     this.data$ = this.graphqlService.getSomeData();
     this.data$.subscribe(data => console.log("hello",data));
