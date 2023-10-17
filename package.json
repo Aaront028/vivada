@@ -24,6 +24,8 @@
     "apollo-angular-link-http": "^1.11.0",
     "apollo-link-ws": "^1.0.20",
     "graphql": "^16.8.1",
+    "keycloak-angular": "^14.1.0",
+    "keycloak-js": "^22.0.4",
     "rxjs": "~7.8.0",
     "subscriptions-transport-ws": "^0.11.0",
     "tslib": "^2.3.0",

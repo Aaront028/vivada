@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   data$!: Observable<any>;
 
   contacts: Contact[] = [];
+  keycloak: any;
 
   constructor(private graphqlService: GraphqlService) {}
 

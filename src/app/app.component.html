@@ -1,3 +1,6 @@
+<router-outlet></router-outlet>
+<button (click)="keycloak.login()">Login</button>
+<button (click)="keycloak.logout()">Logout</button>
 
 <div class="card" *ngIf="data$ | async as data">
 <div *ngFor="let contact of data.contacts">
