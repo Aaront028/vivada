@@ -1,5 +1,5 @@
 {
-  "greeting": "¡Hola, bienvenido a nuestra aplicación!",
-  "description": "Esta es una demostración de compatibilidad con varios idiomas en Angular.",
-  "cool": "¡Bienvenido a este repositorio! Está configurado con una plantilla fundamental y una API funcional conectada a un conjunto de datos de prueba GraphQL. La implementación incluye una funcionalidad CRUD (Crear, Leer, Actualizar, Eliminar) integral con detalles de marcador de posición. La base de código incorpora un Modelo básico y configuración ngxs, que incluye datos de contacto simulados, carga útil y estados. El archivo app.component.html incluye una llamada simple para enumerar los nombres de los contactos. Tenga en cuenta que esta configuración actualmente carece de estilo, excepto los archivos esenciales, como la aplicación. module.ts, graphql.module.ts y la carpeta de entorno están configurados y listos para funcionar"
+  "greeting": "Hola, ¡Bienvenido a nuestra aplicación!",
+  "description": "Esta es una demostración de soporte de varios idiomas en Angular.",
+  "cool": "¡Bienvenido a este repositorio!Está configurado con una plantilla fundamental y una API funcional conectada a un conjunto de datos de prueba GraphQL.La implementación incluye la funcionalidad integral de crud (crear, leer, actualizar, eliminar) con detalles del marcador de posición.La base de código incorpora un modelo básico y una configuración de NGXS, con datos de contacto simulados, carga útil y estados.El archivo app.component.html incluye una llamada simple para enumerar los nombres de contacto.Tenga en cuenta que esta configuración actualmente carece de cualquier estilo, pero los archivos esenciales como app.module.ts, graphql.module.ts y la carpeta de entorno están configurados y listos para funcionar"
 }
