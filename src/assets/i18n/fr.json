@@ -1,4 +1,5 @@
 {
-  "greeting": "Bonjour, bienvenue dans notre application!",
-  "description": "Ceci est une démo de support multilingue en Angular."
+  "greeting": "Bonjour, bienvenue sur notre application !",
+  "description": "Ceci est une démo du support multilingue dans Angular.",
+  "cool": "Bienvenue dans ce référentiel ! Il est configuré avec un modèle de base et une API fonctionnelle connectée à un ensemble de données de test GraphQL. L'implémentation comprend une fonctionnalité CRUD complète (Créer, Lire, Mettre à jour, Supprimer) avec des détails d'espace réservé. La base de code intègre un modèle de base et configuration ngxs, avec des données de contact simulées, une charge utile et des états. Le fichier app.component.html comprend un simple appel pour lister les noms des contacts. Veuillez noter que cette configuration manque actuellement de style, mais des fichiers essentiels tels que l'application. module.ts, graphql.module.ts et le dossier d'environnement sont tous configurés et prêts à fonctionner"
 }

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { GraphQLModule } from './graphql.module'; 
 import { AppState } from './state/app.state'; 
 import { NgxsModule } from '@ngxs/store';
@@ -11,6 +11,7 @@ import { GraphqlService } from './shared/services/graphql.service';
 import { LOCALE_ID} from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import { LanguageService } from './shared/services/language.service';
+
 import { TranslatePipe } from './shared/pipes/translate.pipe';
 import localeEn from '@angular/common/locales/en';
 import localeHi from '@angular/common/locales/hi';
