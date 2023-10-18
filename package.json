@@ -66,7 +66,13 @@
   "overrides": {
     "apollo-angular": {
       "@angular/core": "$@angular/core",
-      "@angular/common": "@angular/common"
+      "@angular/common": "@angular/common",
+      "@angular/forms": "@angular/forms"
+    },
+    "apollo-angular-link-http": {
+      "@angular/core": "$@angular/core",
+      "@angular/common": "@angular/common",
+      "@angular/forms": "@angular/forms"
     }
   }
 }
