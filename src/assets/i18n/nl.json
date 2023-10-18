@@ -1,0 +1,5 @@
+{
+  "greeting": "Hallo, welkom in onze app!",
+  "description": "Dit is een demo van multi-taalondersteuning in Angular.",
+  "cool": "Welkom bij deze repository!Het is geconfigureerd met een fundamentele sjabloon en een functionele API die is aangesloten op een GraphQL -testgegevensset.De implementatie omvat uitgebreide CRUD -functionaliteit (CREATE, LEZEN, UPDATE, DELETE) met tijdelijke details.De codebase bevat een basismodel en NGXS -instellingen, met gesimuleerde contactgegevens, payload en staten.Het bestand App.component.html bevat een eenvoudige oproep om contactnamen te vermelden.Houd er rekening mee dat deze opstelling momenteel geen styling heeft, maar de essentiële bestanden zoals app.module.ts, grafql.module.ts en de omgevingsmap zijn allemaal geconfigureerd en klaar om te gaan"
+}
