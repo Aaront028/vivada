@@ -1,0 +1,4 @@
+[build]
+  command = "NODE_VERSION=18 npm ci && npm run build"
+  publish = "dist/contacts"
+  node_version = "18"
