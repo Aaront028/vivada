@@ -1,2 +1,2 @@
 [build]
-  command = "build:staging"
+  command = "npm run install"
