@@ -2,6 +2,7 @@
   "name": "vivada-ui",
   "version": "0.0.0",
   "scripts": {
+    "install": "npm install --force",
     "ng": "ng",
     "start": "ng serve",
     "start:testing": "ng serve --configuration testing",
@@ -40,7 +41,7 @@
     "graphql": "^16.8.1",
     "keycloak-angular": "^14.1.0",
     "keycloak-js": "^22.0.4",
-    "rxjs": "^7.8.1",
+    "rxjs": "^6.5.3",
     "subscriptions-transport-ws": "^0.11.0",
     "translate": "^2.0.2",
     "translate-google": "^1.5.0",
