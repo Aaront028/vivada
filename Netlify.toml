@@ -1,2 +1,2 @@
 [build]
-  command = "ng build --prod"
+  command = "build:staging"
