@@ -4,7 +4,7 @@ import { of,Observable } from 'rxjs';
 import { switchMap,catchError, map } from 'rxjs/operators';
 import gql from 'graphql-tag';
 import { Store } from '@ngxs/store';
-import { SetInitialContacts } from '../state/app.actions';
+import { SetInitialContacts } from '../../state/app.actions';
 import { tap } from 'rxjs/operators';
 
 

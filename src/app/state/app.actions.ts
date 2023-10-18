@@ -1,4 +1,4 @@
-import { Contact } from '../model/contact.model';
+import { Contact } from '../shared/model/contact.model';
 
 export class SetInitialContacts {
   static readonly type = '[App] Set Initial Contacts';

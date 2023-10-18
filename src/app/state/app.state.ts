@@ -1,6 +1,6 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { UpdateContact } from './app.actions';
-import { Contact } from '../model/contact.model';
+import { Contact } from '../shared/model/contact.model';
 
 export class AppStateModel {
   contacts: Contact[] =[];

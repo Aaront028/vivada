@@ -1,16 +1,28 @@
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { GraphQLModule } from './graphql.module'; 
 import { AppState } from './state/app.state'; 
 import { NgxsModule } from '@ngxs/store';
-import { GraphqlService } from './services/graphql.service';
-//Keycloak imports
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { GraphqlService } from './shared/services/graphql.service';
+
+//language imports
+import { LOCALE_ID} from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import { LanguageService } from './shared/services/language.service';
+
+import { TranslatePipe } from './shared/pipes/translate.pipe';
+import localeEn from '@angular/common/locales/en';
+import localeHi from '@angular/common/locales/hi';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
+
+registerLocaleData(localeEn);
+registerLocaleData(localeHi);
 
 
 function initializeKeycloak(keycloak: KeycloakService) {
@@ -31,7 +43,9 @@ function initializeKeycloak(keycloak: KeycloakService) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LanguageSwitcherComponent,
+    TranslatePipe
   ],
   imports: [
     BrowserModule,

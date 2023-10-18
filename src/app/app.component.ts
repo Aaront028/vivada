@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Contact } from './model/contact.model';
-import { GraphqlService } from './services/graphql.service';
+import { Component, Input, OnInit, LOCALE_ID, Inject } from '@angular/core';
+import { Contact } from './shared/model/contact.model';
+import { GraphqlService } from './shared/services/graphql.service';
 import { Observable } from 'rxjs';
 import { KeycloakService } from 'keycloak-angular';
+import { LanguageService } from './shared/services/language.service';
 
 @Component({
   selector: 'app-root',
@@ -21,9 +22,14 @@ export class AppComponent implements OnInit {
   keycloak: any;
 
   constructor(
+    @Inject(LOCALE_ID) private locale: string,
     private graphqlService: GraphqlService,
-    public keycloakService: KeycloakService
-    ) {}
+    public keycloakService: KeycloakService,
+    private languageService: LanguageService,
+    )
+    {
+      this.languageService.setCurrentLanguage(locale);
+    }
 
     login() {
       this.keycloakService.login();
