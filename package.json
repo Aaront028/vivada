@@ -1,6 +1,9 @@
 {
   "name": "vivada-ui",
   "version": "0.0.0",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "install": "npm install --force",
     "build": "ng build",

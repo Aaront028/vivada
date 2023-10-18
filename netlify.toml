@@ -1,0 +1,3 @@
+[build]
+  command = "npm install && nvm use 18"
+  publish= "dist/contacts"
