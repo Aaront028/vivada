@@ -2,7 +2,7 @@
   "name": "vivada-ui",
   "version": "0.0.0",
   "scripts": {
-    "install": "npm install --force",
+    "install": "npm install --legacy-peer-deps",
     "ng": "ng",
     "start": "ng serve",
     "start:testing": "ng serve --configuration testing",
