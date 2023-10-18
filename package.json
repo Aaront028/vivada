@@ -4,9 +4,18 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "start:testing": "ng serve --configuration testing",
+    "build:staging": "rm dist -rf && ng build --configuration staging && npm run scully",
+    "build:testing": "rm dist -rf && ng build --configuration testing",
+    "build:production": "rm dist -rf && ng build --configuration production && npm run scully",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "cypress open --config defaultCommandTimeout=5000 --env apiUrl=http://localhost:8000/graphql/",
+    "scully": "npx scully --",
+    "scully-serve": "scully serve",
+    "deploy:staging": "npm run build:staging && git add . && git commit -m'Rebuild and deploy' && git push origin staging",
+    "deploy:production": "npm run build:production && git add . && git commit -m'Rebuild and deploy' && git push origin production",
+    "stage": "git checkout staging && git pull origin staging",
+    "golive": "git checkout staging && git pull origin staging && git checkout master && git merge staging && git push origin master && git checkout dev && git merge master && git push origin dev"
   },
   "private": true,
   "dependencies": {
