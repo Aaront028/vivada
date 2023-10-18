@@ -5,7 +5,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "install": "npm install && nvm install 18 && npm use 18",
+    "install": "npm install && nvm install 18 && nvm use 18",
     "build": "ng build",
     "start": "ng serve",
     "start:testing": "ng serve --configuration testing",
