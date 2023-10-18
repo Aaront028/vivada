@@ -65,7 +65,8 @@
   },
   "overrides": {
     "apollo-angular": {
-      "@angular/core": "$@angular/core"
+      "@angular/core": "$@angular/core",
+      "@angular/common": "@angular/common"
     }
   }
 }
