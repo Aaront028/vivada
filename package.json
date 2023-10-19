@@ -5,7 +5,6 @@
     "node": ">=18"
   },
   "scripts": {
-    "install": "nvm install 14 && nvm install use 14 && npm install",
     "build": "ng build",
     "start": "ng serve",
     "start:testing": "ng serve --configuration testing",
