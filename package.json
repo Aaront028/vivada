@@ -5,7 +5,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "ng build --configuration=production",
+    "build": "node start-with-env.js && ng build --configuration=production",
     "start": "ng serve",
     "start:testing": "ng serve --configuration testing",
     "build:staging": "rm dist -rf && ng build --configuration staging && npm run scully",
@@ -38,7 +38,6 @@
     "apollo-angular-link-http": "^1.11.0",
     "apollo-link-ws": "^1.0.20",
     "auto-i18n": "^1.0.0",
-    "dotenv": "^16.3.1",
     "google-translate-api": "^2.3.0",
     "graphql": "^15.8.0",
     "keycloak-angular": "^14.1.0",
@@ -58,6 +57,7 @@
     "@angular/compiler-cli": "^16.2.0",
     "@types/jasmine": "~4.3.0",
     "@types/node": "^20.8.6",
+    "dotenv": "^16.3.1",
     "env-cmd": "^10.1.0",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",

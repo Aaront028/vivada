@@ -1,7 +1,6 @@
-// environment.prod.ts
 export const environment = {
   production: true,
-  apiUrl: 'REPLACE_WITH_API_URL',
-  hasuraAdminSecret: 'REPLACE_WITH_HASURA_ADMIN_SECRET',
-  // ... other variables
+  apiUrl: 'API_URL',
+  hasuraAdminSecret: 'HASURA_ADMIN_SECRET',
+  // Add other variables as needed
 };
