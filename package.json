@@ -5,7 +5,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "ng build",
+    "build": "env-cmd -f .env ng build --configuration=production",
     "start": "ng serve",
     "start:testing": "ng serve --configuration testing",
     "build:staging": "rm dist -rf && ng build --configuration staging && npm run scully",
