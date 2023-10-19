@@ -7,10 +7,13 @@ import { getMainDefinition } from '@apollo/client/utilities';
 import { HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
 
-const uri = environment.apiUrl;
-const adminSecret = environment.hasuraAdminSecret;
+// const uri = environment.apiUrl;
+// const adminSecret = environment.hasuraAdminSecret;
+const uri = process.env['API_KEY'];
+const adminSecret = process.env['HASURA_ADMIN_SECRET'];
 
-console.log("URI",uri);
+console.log("URI",process.env['API_KEY']);
+console.log("URI",process.env['HASURA_ADMIN_SECRET']);
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   // Create HttpHeaders
