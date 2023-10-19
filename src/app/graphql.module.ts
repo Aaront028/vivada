@@ -7,22 +7,15 @@ import { getMainDefinition } from '@apollo/client/utilities';
 import { HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
 
-// const uri = environment.apiUrl;
-// const adminSecret = environment.hasuraAdminSecret;
-const uri = process.env['API_KEY'];
-const adminSecret = process.env['HASURA_ADMIN_SECRET'];
+const uri = environment.apiUrl;
+const adminSecret = environment.hasuraAdminSecret;
 
-console.log("URI",process.env['API_KEY']);
-console.log("URI",process.env['HASURA_ADMIN_SECRET']);
+console.log("URI",uri);
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   // Create HttpHeaders
-  // const headers = new HttpHeaders().set('x-hasura-admin-secret', adminSecret);
-  if (adminSecret) {
-    const headers = new HttpHeaders().set("x-hasura-admin-secret", adminSecret);
-    // rest of your code
-  }
-  
+  const headers = new HttpHeaders().set('x-hasura-admin-secret', adminSecret);
+
   // HTTP Link
   const http = httpLink.create({
     uri,
@@ -30,8 +23,10 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   });
 
   // WebSocket Link
+  console.log('WebSocket URL:', environment.apiUrl);
+
   const ws = new WebSocketLink({
-    uri: uri ? uri.replace("http", "ws") : '', // replace with a default value or handle accordingly
+    uri: environment.apiUrl.replace("http", "ws"),
     // Adjust the WebSocket URL accordingly
     options: {
       reconnect: true,
@@ -42,6 +37,7 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
       },
     },
   });
+  
 
 
   const link = split(
