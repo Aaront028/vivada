@@ -7,8 +7,6 @@ import { getMainDefinition } from '@apollo/client/utilities';
 import { HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
 
-
-
 const uri = environment.apiUrl;
 const adminSecret = environment.hasuraAdminSecret;
 
