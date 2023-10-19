@@ -10,7 +10,26 @@ import { environment } from '../environments/environment';
 const uri = environment.apiUrl;
 const adminSecret = environment.hasuraAdminSecret;
 
-console.log("URI",uri);
+console.log("URI", uri);
+
+let ws: WebSocketLink | undefined;
+
+if (environment.apiUrl) {
+  ws = new WebSocketLink({
+    uri: environment.apiUrl.replace("http", "ws"),
+    // Adjust the WebSocket URL accordingly
+    options: {
+      reconnect: true,
+      connectionParams: {
+        headers: {
+          'x-hasura-admin-secret': adminSecret,
+        },
+      },
+    },
+  });
+} else {
+  console.error('API URL is not defined.');
+}
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   // Create HttpHeaders
@@ -22,31 +41,12 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     headers,
   });
 
-  // WebSocket Link
-  if (environment.apiUrl) {
-    const ws = new WebSocketLink({
-      uri: environment.apiUrl.replace("http", "ws"),
-      // Adjust the WebSocket URL accordingly
-      options: {
-        reconnect: true,
-        connectionParams: {
-          headers: {
-            'x-hasura-admin-secret': adminSecret,
-          },
-        },
-      },
-    });
-  } else {
-    console.error('API URL is not defined.');
-  }
-
-
   const link = split(
     ({ query }) => {
       const definition = getMainDefinition(query);
       return definition.kind === 'OperationDefinition' && definition.operation === 'subscription';
     },
-    ws,
+    ws!,
     http,
   );
 
