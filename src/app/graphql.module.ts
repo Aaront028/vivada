@@ -17,8 +17,12 @@ console.log("URI",process.env['HASURA_ADMIN_SECRET']);
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   // Create HttpHeaders
-  const headers = new HttpHeaders().set('x-hasura-admin-secret', adminSecret);
-
+  // const headers = new HttpHeaders().set('x-hasura-admin-secret', adminSecret);
+  if (adminSecret) {
+    const headers = new HttpHeaders().set("x-hasura-admin-secret", adminSecret);
+    // rest of your code
+  }
+  
   // HTTP Link
   const http = httpLink.create({
     uri,
@@ -27,7 +31,8 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
 
   // WebSocket Link
   const ws = new WebSocketLink({
-    uri: uri.replace('http', 'ws'), // Adjust the WebSocket URL accordingly
+    uri: uri ? uri.replace("http", "ws") : '', // replace with a default value or handle accordingly
+    // Adjust the WebSocket URL accordingly
     options: {
       reconnect: true,
       connectionParams: {
