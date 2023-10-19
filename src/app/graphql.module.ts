@@ -23,21 +23,22 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   });
 
   // WebSocket Link
-  console.log('WebSocket URL:', environment.apiUrl);
-
-  const ws = new WebSocketLink({
-    uri: environment.apiUrl.replace("http", "ws"),
-    // Adjust the WebSocket URL accordingly
-    options: {
-      reconnect: true,
-      connectionParams: {
-        headers: {
-          'x-hasura-admin-secret': adminSecret,
+  if (environment.apiUrl) {
+    const ws = new WebSocketLink({
+      uri: environment.apiUrl.replace("http", "ws"),
+      // Adjust the WebSocket URL accordingly
+      options: {
+        reconnect: true,
+        connectionParams: {
+          headers: {
+            'x-hasura-admin-secret': adminSecret,
+          },
         },
       },
-    },
-  });
-  
+    });
+  } else {
+    console.error('API URL is not defined.');
+  }
 
 
   const link = split(
