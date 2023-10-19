@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: process.env['API_URL'] || 'apiUrl',
-  hasuraAdminSecret: process.env['HASURA_ADMIN_SECRET'] || 'hasuraAdminSecret',
+  apiUrl: 'apiUrl',
+  hasuraAdminSecret: 'hasuraAdminSecret',
   // Add other variables as needed
 };
