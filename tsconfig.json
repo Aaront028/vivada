@@ -2,6 +2,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "types": ["node", "dotenv"],
+    "typeRoots": ["node_modules/@types", "node_modules/dotenv/types"],
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

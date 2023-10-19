@@ -6,9 +6,16 @@ import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
+// service.ts
+import * as dotenv from 'dotenv';
+dotenv.config();
 
-const uri = environment.apiUrl;
-const adminSecret = environment.hasuraAdminSecret;
+// Your service logic
+const uri = process.env['API_URL'] || 'default-api-url';
+const adminSecret = process.env['HASURA_ADMIN_SECRET'] || 'default-admin-secret';
+
+// const uri = environment.apiUrl;
+// const adminSecret = environment.hasuraAdminSecret;
 
 console.log("URI", uri);
 console.log("Admin Secret", adminSecret);
