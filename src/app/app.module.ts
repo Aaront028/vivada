@@ -7,6 +7,7 @@ import { AppState } from './state/app.state';
 import { NgxsModule } from '@ngxs/store';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { GraphqlService } from './shared/services/graphql.service';
+import { environment } from 'src/environments/environment';
 
 //language imports
 import { LOCALE_ID} from '@angular/core';
@@ -24,14 +25,14 @@ import { LanguageSwitcherComponent } from './language-switcher/language-switcher
 registerLocaleData(localeEn);
 registerLocaleData(localeHi);
 
-
+console.log(environment.realm);
 function initializeKeycloak(keycloak: KeycloakService) {
   console.log("initialized",initializeKeycloak );
   return () =>
     keycloak.init({
       config: {
         url: 'http://localhost:8080',
-        realm: 'myrealm',
+        realm: environment.realm,
         clientId: 'myclient'
       },
       initOptions: {
