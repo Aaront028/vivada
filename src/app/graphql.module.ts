@@ -6,7 +6,7 @@ import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
-
+console.log("this is inside the module");
 
 const uri = environment.apiUrl;
 const adminSecret = environment.hasuraAdminSecret;
