@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl:'YOUR_DEFAULT_API_URL',
-  hasuraAdminSecret: 'YOUR_DEFAULT_API_KEY',
+  apiUrl: process.env['NG_APP_API_URL'],
+  hasuraAdminSecret: process.env['NG_APP_HASURA_ADMIN_SECRET'],
   realm: 'vivada-ui-online',
 };
