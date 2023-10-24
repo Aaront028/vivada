@@ -36,7 +36,7 @@ Set the password in the Credentials tab, turning off Temporary.
 
 2. Setup Clients:
 
-Click on Clients on the left side menu and select Create client.
+Click on Clients on the left side menu and select Create client. You can skip `Capability config`
 ```markdown
 Client ID: vivada-local
 Valid redirect URIs: http://localhost:4200/*
