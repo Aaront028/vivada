@@ -37,11 +37,12 @@ Set the password in the Credentials tab, turning off Temporary.
 2. Setup Clients:
 
 Click on Clients on the left side menu and select Create client.
-markdown
+```markdown
 Client ID: vivada-local
 Valid redirect URIs: http://localhost:4200/*
 Web origins: http://localhost:4200
 Click Save.
+```
 
 3. For Netlify deployment Clients repeat step 2 with Client ID as `vivada-online` and your chosen URI's and Web origins. It should look something like this.
 markdown
