@@ -3,7 +3,7 @@ Welcome to this repository! It's configured with a foundational template and a f
 
 # Local Setup
 Once you have cloned the repository, navigate to the project folder.
-
+1. **Step one**
 ```bash 
 cd vivada-ui
 ```
@@ -14,6 +14,7 @@ Install all dependencies, including --force.
 npm install --force
 ```
 
+2. **Step two**
 After installing dependencies, you'll need to install and run Keycloak on Docker. If Docker is not installed, download it from [here ](https://www.keycloak.org/downloads) and follow the instructions for your Operating System.
 
 To run the Keycloak server, execute the following command in the terminal. Make sure your Docker application is running!
@@ -26,7 +27,7 @@ Wait for the Keycloak server to start successfully. Once running, access the adm
 
 This will give you access to the master realm setup. Now click on the `master` dropdown menu and click on `Create Realm`. 
 
-1. For our deployment realm, we are using the name `vivada`
+-1. For our deployment realm, we are using the name `vivada`
 
 Realm name: **vivada**
 
@@ -34,7 +35,7 @@ Click Create, then navigate to Users and add a user named `myuser` with the desi
 
 Set the password in the Credentials tab, turning off Temporary.
 
-2. Setup Clients:
+-2. Setup Clients:
 
 Click on Clients on the left side menu and select Create client. You can skip `Capability config`
 ```markdown
@@ -44,7 +45,7 @@ Web origins: http://localhost:4200
 Click Save.
 ```
 
-3. For Netlify deployment Clients repeat step 2 with Client ID as `vivada-online` and your chosen URI's and Web origins. It should look something like this.
+-3. For Netlify deployment Clients repeat step 2 with Client ID as `vivada-online` and your chosen URI's and Web origins. It should look something like this.
 ```markdown
 Client ID: vivada-online
 Valid redirect URIs: https://timely-salamander-2a0240.netlify.app/*
