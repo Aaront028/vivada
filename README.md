@@ -150,6 +150,29 @@ NPM_FLAGS: --force
 ```
 
 Our api url and api key is in the UI-dev channel on discord. 
+
+# Language translation script (Optional)
+
+The language script allows you to generate translations for various languages by creating JSON files that contain the necessary variables for HTML tag modifications. Follow the steps below to run the script:
+
+1. Open the translate-script.ts file located in src/assets/i18n/.
+
+2. Locate the targetLanguages array on line 11 and add the initials of the languages you want to generate translations for. For example:
+
+```bash
+  const targetLanguages = ['jp', 'nl', 'es'];
+```
+3. Save the changes.
+4. Open your terminal and navigate to the project directory.
+5. Run the following command to execute the script:
+
+```bash
+npx ts-node src/assets/i18n/translate-script.ts
+```
+
+After execution, you will find automatically generated JSON files (e.g., jp.json, nl.json, es.json) in the src/assets/i18n folder.
+These JSON files contain translations for the specified languages, and you can use them to modify HTML tags according to the variables. Customise the script based on your project's needs.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
