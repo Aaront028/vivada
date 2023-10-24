@@ -128,8 +128,7 @@ chmod +x .git/hooks/post-checkout
 
 Now, whenever you switch branches, the environment file will be automatically updated.
 
-# Netlify Deployment environment variables
-# Netlify Deployment Setup
+# Netlify Deployment Environment Variables and Setup
 
 To deploy your Angular application to Netlify, a few configurations are necessary. By default, Angular does not recognize `process.env`, and Netlify uses `.env` environment variables instead of environment.ts. To bridge this gap, we've integrated a library called `@ngx-env/builder`. This library enables us to utilise Netlify's environment variables during the build process. We've already configured this dependency in our application to search for `process.env`.
 
