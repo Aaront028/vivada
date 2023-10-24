@@ -98,8 +98,8 @@ Your application should be up and running with Keycloak. Congratulations!
   hasuraAdminSecret: 'enter_your_api_key_here', //you can get these information from UI-dev discord channel
   realm: 'vivada',
   clientId: 'vivada-local'
-};
-```
+  };
+  ```
 
 4. **Automatic Switching:**
 By following these steps, you'll have a well-organized environments folder with dedicated environment files for each branch.
