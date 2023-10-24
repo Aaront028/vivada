@@ -30,7 +30,7 @@ This will give you access to the master realm setup. Now click on the `master` d
 
 Realm name: **vivada**
 
-Click Create, then navigate to Users and add a user named myuser with the desired details.
+Click Create, then navigate to Users and add a user named `myuser` with the desired details.
 
 Set the password in the Credentials tab, turning off Temporary.
 
