@@ -22,7 +22,7 @@ To run the Keycloak server, execute the following command in the terminal. Make 
 docker run -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:22.0.4 start-dev
 ```
 
-Wait for the Keycloak server to start successfully. Once running, access the administration console at http://localhost:8080/ log in with admin for both username and password.
+Wait for the Keycloak server to start successfully. Once running, access the administration console at http://localhost:8080/ log in with `admin` for both username and password.
 
 This will give you access to the master realm setup. Now click on the master dropdown menu and click on `Create Realm`. 
 
