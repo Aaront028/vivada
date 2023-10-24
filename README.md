@@ -10,8 +10,9 @@ cd vivada-ui
 
 Install all dependencies, including --force.
 
-bash
+```bash
 npm install --force
+```
 
 After installing dependencies, you'll need to install and run Keycloak on Docker. If Docker is not installed, download it from [here ](https://www.keycloak.org/downloads) and follow the instructions for your Operating System.
 
