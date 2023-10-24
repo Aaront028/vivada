@@ -4,7 +4,7 @@ Welcome to this repository! It's configured with a foundational template and a f
 # Local Setup
 Once you have cloned the repository, navigate to the project folder.
 
-bash
+```bash
 cd vivada-ui
 
 Install all dependencies, including --force.
