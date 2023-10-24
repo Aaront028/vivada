@@ -24,7 +24,7 @@ docker run -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin
 
 Wait for the Keycloak server to start successfully. Once running, access the administration console at http://localhost:8080/ log in with `admin` for both username and password.
 
-This will give you access to the master realm setup. Now click on the master dropdown menu and click on `Create Realm`. 
+This will give you access to the master realm setup. Now click on the `master` dropdown menu and click on `Create Realm`. 
 
 1. For our deployment realm, we are using the name `vivada`
 
