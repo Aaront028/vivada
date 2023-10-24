@@ -5,18 +5,18 @@ Welcome to this repository! It's configured with a foundational template and a f
 Once you have cloned the repository, navigate to the project folder.
 
 ```bash
-cd vivada-ui```
+cd vivada-ui
 
 Install all dependencies, including --force.
 
 ```bash
 npm install --force
-```
+
 After installing dependencies, you'll need to install and run Keycloak on Docker. If Docker is not installed, download it from [here ](https://www.keycloak.org/downloads) and follow the instructions for your Operating System.
 
 To run the Keycloak server, execute the following command in the terminal. Make sure your Docker application is running!
 
-```bash docker run -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:22.0.4 start-dev```
+```bash docker run -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:22.0.4 start-dev
 
 Wait for the Keycloak server to start successfully. Once running, access the administration console at http://localhost:8080/, log in with admin for both username and password.
 
@@ -37,20 +37,20 @@ Click on Clients on the left side menu and select Create client.
 Client ID: vivada-local
 Valid redirect URIs: http://localhost:4200/*
 Web origins: http://localhost:4200
-Click Save.```
+Click Save.
 
 3. For Netlify deployment Clients repeat step 2 with Client ID as `vivada-online` and your chosen URI's and Web origins. It should look something like this.
 ```markdown
 Client ID: vivada-online
 Valid redirect URIs: https://timely-salamander-2a0240.netlify.app/*
 Web origins: https://timely-salamander-2a0240.netlify.app
-Click Save.```
+Click Save.
 
 These step is crucial for both local and deployment environments!
 
 You should now be setup for local environment with Keycloak installed. 
 
-```bash ng serve```
+```bash ng serve
 
 Then your application should be up and running with Keycloak. 
 
