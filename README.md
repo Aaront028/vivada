@@ -148,6 +148,7 @@ NG_APP_API_URL: 'enter_your_api_url_here'
 NG_APP_HASURA_ADMIN_SECRET: 'enter_your_api_key_here'
 NODE_VERSION: 18
 NPM_FLAGS: --force
+```
 
 Our api url and api key is in the UI-dev channel on discord. 
 ## Development server
