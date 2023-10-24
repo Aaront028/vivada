@@ -15,8 +15,7 @@ console.log("URI",uri);
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   // Create HttpHeaders
-  const headers = new HttpHeaders().set('x-hasura-admin-secret', adminSecret);
-
+  const headers = new HttpHeaders().set("x-hasura-admin-secret", adminSecret || '');
   // HTTP Link
   const http = httpLink.create({
     uri,
@@ -25,7 +24,7 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
 
   // WebSocket Link
   const ws = new WebSocketLink({
-    uri: uri.replace('http', 'ws'), // Adjust the WebSocket URL accordingly
+    uri: uri ? uri.replace("http", "ws") : '', // Adjust the WebSocket URL accordingly
     options: {
       reconnect: true,
       connectionParams: {
