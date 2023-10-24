@@ -65,16 +65,14 @@ Your application should be up and running with Keycloak. Congratulations!
 # Set Up Environment Files
 
 # Environment variables setup
-1. **Create the Environments Folder:**
-- Inside the `app` folder of your project, create a new folder named `environments`.
-
-2. **Generate Environment Files:**
-  - For each branch or environment, create a corresponding `environment.ts` file.
+1. **The Environments Folder:**
+- Inside the `src` folder of your project, there is folder named `environments`.
+  - For each branch or environment, there should be corresponding `environment.ts` file.
     - `environment.prod.ts` for the main branch (production).
     - `environment.staging.ts` for the staging branch.
     - `environment.dev.ts` for other development branches.
 
-3. **Folder Structure:**
+2. **Folder Structure:**
   - Your folder structure should look like this:
 
   <pre>
@@ -90,10 +88,20 @@ Your application should be up and running with Keycloak. Congratulations!
       - environment.dev.ts
   </pre>
 
-4. **Configure Environment Files:**
-- Open each `environment.ts` file and configure the settings specific to its branch.
+3. **Configure Environment Files:**
+- Create `environment.ts` file and configure the settings. It should look something like this
 
-5. **Automatic Switching:**
+  ```bash
+  export const environment = {
+  production: false,
+  apiUrl: 'enter_your_api_url_here',  //you can get these information from UI-dev discord channel
+  hasuraAdminSecret: 'enter_your_api_key_here', //you can get these information from UI-dev discord channel
+  realm: 'vivada',
+  clientId: 'vivada-local'
+};
+```
+
+4. **Automatic Switching:**
 By following these steps, you'll have a well-organized environments folder with dedicated environment files for each branch.
 
 # Angular Environment Setup
