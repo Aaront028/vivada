@@ -45,11 +45,12 @@ Click Save.
 ```
 
 3. For Netlify deployment Clients repeat step 2 with Client ID as `vivada-online` and your chosen URI's and Web origins. It should look something like this.
-markdown
+```markdown
 Client ID: vivada-online
 Valid redirect URIs: https://timely-salamander-2a0240.netlify.app/*
 Web origins: https://timely-salamander-2a0240.netlify.app
 Click Save.
+```
 
 These step is crucial for both local and deployment environments!
 
