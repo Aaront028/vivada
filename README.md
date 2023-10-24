@@ -56,7 +56,9 @@ These step is crucial for both local and deployment environments!
 
 You should now be setup for local environment with Keycloak installed. 
 
-bash ng serve
+```bash
+ng serve
+```
 
 Then your application should be up and running with Keycloak. 
 
