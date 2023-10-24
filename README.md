@@ -88,7 +88,7 @@ Your application should be up and running with Keycloak. Congratulations!
   </pre>
 
 3. **Configure Environment Files:**
-- Create `environment.ts` file and configure the settings. This file will only be available to you on your local branch and will not be pushed to Gitlab. The file should look something like this
+- Create `environment.ts` file and configure the settings. This file will only be available to you on your local branch and will not be pushed to Gitlab. It will save you from re-entering credentials in order for the application to work. The file should look something like this
 
   ```bash
   export const environment = {
