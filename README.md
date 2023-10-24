@@ -63,8 +63,6 @@ ng serve
 
 Your application should be up and running with Keycloak. Congratulations!
 
-# Set Up Environment Files
-
 # Environment variables setup
 1. **The Environments Folder:**
 - Inside the `src` folder of your project, there is folder named `environments`.
