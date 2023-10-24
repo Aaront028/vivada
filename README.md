@@ -28,7 +28,7 @@ This will give you access to the master realm setup. Now click on the `master` d
 
 1. For our deployment realm, we are using the name `vivada`
 
-`Realm name: **vivada**`
+Realm name: **vivada**
 
 Click Create, then navigate to Users and add a user named myuser with the desired details.
 
