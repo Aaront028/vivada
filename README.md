@@ -60,9 +60,7 @@ You should now be setup for local environment with Keycloak installed.
 ng serve
 ```
 
-Then your application should be up and running with Keycloak. 
-
-
+Your application should be up and running with Keycloak. Congratulations!
 
 # Set Up Environment Files
 
@@ -100,7 +98,7 @@ By following these steps, you'll have a well-organized environments folder with 
 
 # Angular Environment Setup
 
-In Angular, switching branches can cause environment files to disappear, leading to setup hassles and potential accidental commits. To address this, a script has been crafted for your convenience. It automatically relocates your environment folders to match the active branch, ensuring safety from unintentional commits, thanks to entries in the gitignore file.
+Switching branches can cause environment files to disappear, leading to setup hassles and potential accidental commits. To address this, a script has been crafted for your convenience. It automatically relocates your environment folders to match the active branch, ensuring safety from unintentional commits, thanks to entries in the gitignore file.
 
 # Set Up the Automatic Switching
 1. **Copy the Hook Script:** Copy the post-checkout hook script into your project. The script is located at .githooks/post-checkout in the root of your project.
@@ -122,20 +120,34 @@ chmod +x .git/hooks/post-checkout
 
 Now, whenever you switch branches, the environment file will be automatically updated.
 
+# Netlify Deployment environment variables
+# Netlify Deployment Setup
+
+To deploy your Angular application to Netlify, a few configurations are necessary. By default, Angular does not recognize `process.env`, and Netlify uses `.env` environment variables instead of environment.ts. To bridge this gap, we've integrated a library called `@ngx-env/builder`. This library enables us to utilise Netlify's environment variables during the build process. We've already configured this dependency in our application to search for `process.env`.
+
+To set up Netlify variables, follow these steps in the Netlify UI:
+
+1. **Build Settings:**
+   - Build command: `npm run build`
+   - Publish directory: `dist/vivada-ui`
+   - Dependency management: `18.x`
+
+2. **Environment Variables:**
+   - Prefix all variables with `NG_APP`.
+   - Enter the following settings and variables:
+
+```markdown
+NG_APP_API_URL: 'enter_your_api_url_here'
+NG_APP_HASURA_ADMIN_SECRET: 'enter_your_api_key_here'
+NODE_VERSION: 18
+NPM_FLAGS: --force
+
+Our api url and api key is in the UI-dev channel on discord. 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/vivada-ui` directory.
 
