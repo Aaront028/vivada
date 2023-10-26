@@ -7,7 +7,7 @@ import { AppState } from './state/app.state';
 import { NgxsModule } from '@ngxs/store';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { GraphqlService } from './shared/services/graphql.service';
-
+import { environment } from 'src/environments/environment';
 //language imports
 import { LOCALE_ID} from '@angular/core';
 import { registerLocaleData } from '@angular/common';
@@ -31,8 +31,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
     keycloak.init({
       config: {
         url: 'http://localhost:8080',
-        realm: 'myrealm',
-        clientId: 'myclient'
+        realm: environment.realm,
+        clientId: environment.clientId
       },
       initOptions: {
         onLoad: 'login-required',

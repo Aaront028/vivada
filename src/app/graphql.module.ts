@@ -10,8 +10,7 @@ import { environment } from '../environments/environment';
 
 const uri = environment.apiUrl;
 const adminSecret = environment.hasuraAdminSecret;
-console.log(environment.apiUrl);
-console.log("URI",uri);
+environment.testMessage && console.log(environment.testMessage);
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   // Create HttpHeaders

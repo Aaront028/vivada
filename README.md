@@ -15,7 +15,7 @@ npm install --force
 ```
 
 
-After installing dependencies, you'll need to install and run Keycloak on Docker. If Docker is not installed, download it from [here ](https://www.keycloak.org/downloads) and follow the instructions for your Operating System.
+After installing dependencies, you'll need to install and run Keycloak on Docker. If Docker is not installed, download it from [here ](https://www.docker.com/get-started/) and follow the instructions for your Operating System.
 
 To run the Keycloak server, execute the following command in the terminal. Make sure your Docker application is running!
 
@@ -142,6 +142,7 @@ To set up Netlify variables, follow these steps in the Netlify UI:
    - Prefix all variables with `NG_APP`.
    - Enter the following settings and variables:
 
+You can import these variables into netlify's .env
 ```markdown
 NG_APP_API_URL: 'enter_your_api_url_here'
 NG_APP_HASURA_ADMIN_SECRET: 'enter_your_api_key_here'
@@ -160,7 +161,7 @@ The language script allows you to generate translations for various languages by
 2. Locate the targetLanguages array on line 11 and add the initials of the languages you want to generate translations for. For example:
 
 ```bash
-  const targetLanguages = ['jp', 'nl', 'es'];
+  const targetLanguages = ['ja', 'nl', 'es'];
 ```
 3. Save the changes.
 4. Open your terminal and navigate to the project directory.
