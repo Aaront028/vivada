@@ -100,6 +100,13 @@ Your application should be up and running with Keycloak. Congratulations!
   };
   ```
 
+Alternatively you can create a `.env` file in the root folder of the project. Credentials are in discord channel.
+  
+  ```bash
+NG_APP_API_URL='enter_your_api_url_here'
+NG_APP_HASURA_ADMIN_SECRET='enter_your_api_key_here'
+  ```
+
 4. **Automatic Switching:**
 By following these steps, you'll have a well-organized environments folder with dedicated environment files for each branch.
 
