@@ -1,0 +1,19 @@
+<div class="card-details">
+  <div *ngIf="claim" class="card-details-container">
+    
+    <h4 class="card-details-title">
+      Title: 
+      
+      <span >
+        {{claim.title}}
+      </span>
+      <button *ngIf="!editing && isEditing" (click)="startEditing()"><i class="fa-solid fa-pen-to-square"></i>Edit</button>
+      <input style="width: 100%" *ngIf="editing" [(ngModel)]="editedTitle" (blur)="stopEditing()" (keyup.enter)="stopEditing()">
+    </h4>
+
+    <h5 class="card-details-title">Description: {{claim.description}}
+      <textarea  style="width: 100%; height: 100%; box-sizing: border-box;" [rows]="calculateRows()" *ngIf="editing" [(ngModel)]="editedDescription" (blur)="stopEditing()" (keyup.enter)="stopEditing()"></textarea>
+    </h5>
+    
+  </div>
+</div>

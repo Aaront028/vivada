@@ -5,7 +5,6 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { GraphQLModule } from './graphql.module'; 
 import { AppState } from './state/app.state'; 
 import { NgxsModule } from '@ngxs/store';
-import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { GraphqlService } from './shared/services/graphql.service';
 import { environment } from 'src/environments/environment';
 //language imports
@@ -19,31 +18,18 @@ import localeHi from '@angular/common/locales/hi';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ClaimsComponent } from './shared/components/claims/claims.component';
 import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
+import { ClaimDetailsComponent } from './shared/components/claims/claim-details/claim-details.component';
 
 registerLocaleData(localeEn);
 registerLocaleData(localeHi);
 
-
-function initializeKeycloak(keycloak: KeycloakService) {
-  console.log("initialized",initializeKeycloak );
-  return () =>
-    keycloak.init({
-      config: {
-        url: 'http://localhost:8080',
-        realm: environment.realm,
-        clientId: environment.clientId
-      },
-      initOptions: {
-        onLoad: 'login-required',
-        flow: 'standard',
-    }
-    });
-}
-
 @NgModule({
   declarations: [
     AppComponent,
+    ClaimsComponent,
+    ClaimDetailsComponent,
     LanguageSwitcherComponent,
     TranslatePipe
   ],
@@ -54,16 +40,11 @@ function initializeKeycloak(keycloak: KeycloakService) {
     GraphQLModule,
     AppRoutingModule,
     NgxsModule.forRoot([AppState]),
-    KeycloakAngularModule,
+
   ],
   providers: [
     GraphqlService,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeKeycloak,
-      multi: true,
-      deps: [KeycloakService]
-    }
+
   ],
   bootstrap: [AppComponent]
 })

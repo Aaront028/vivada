@@ -1,5 +1,4 @@
 {
-  "greeting": "Hola, ¡Bienvenido a nuestra aplicación!",
-  "description": "Esta es una demostración de soporte de varios idiomas en Angular.",
-  "cool": "¡Bienvenido a este repositorio!Está configurado con una plantilla fundamental y una API funcional conectada a un conjunto de datos de prueba GraphQL.La implementación incluye la funcionalidad integral de crud (crear, leer, actualizar, eliminar) con detalles del marcador de posición.La base de código incorpora un modelo básico y una configuración de NGXS, con datos de contacto simulados, carga útil y estados.El archivo app.component.html incluye una llamada simple para enumerar los nombres de contacto.Tenga en cuenta que esta configuración actualmente carece de cualquier estilo, pero los archivos esenciales como app.module.ts, graphql.module.ts y la carpeta de entorno están configurados y listos para funcionar"
+  "greeting": "¡Bienvenido a Vivada!",
+  "description": "Agregue sus reclamos"
 }

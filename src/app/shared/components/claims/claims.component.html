@@ -1,0 +1,44 @@
+<div>
+  <button class="btn submit-btn" (click)="login()">Login</button>
+  <button class="btn submit-btn" (click)="logout()">Logout</button>
+</div>
+
+<div>
+<div>
+  <h1>{{ 'greeting' | translate }}</h1>
+  <p>{{ 'description' | translate }}</p>
+</div>
+<div class="card" *ngIf="data$ | async as data">
+  <div *ngFor="let claim of data.claims" class="claim-container" style="cursor: pointer;">
+    <h2 class="claim-name" (click)="toggleDetails(claim)" [class.selected]="claim === selectedClaim && !isEditing">
+      <button (click)="deleteClaim(claim.id)" *ngIf="isEditing" class="btn delete-claim">
+        <i class="fa-solid fa-trash"></i>
+      </button>
+      {{ claim.title }}
+    </h2>
+
+    <app-claim-details *ngIf="claim === selectedClaim" [claim]="selectedClaim!" [isEditing]="isEditing"  (claimUpdated)="updateClaim($event)"></app-claim-details>
+  </div>
+
+
+<div class="card-details">
+  <button class="btn add-new-claim-btn" (click)="addNewClaimBtn()">Add Claim</button>
+
+  <form *ngIf="addBtnClicked" (ngSubmit)="addClaim()">
+    <div class="card-details-input">
+      <label for="newClaimTitle">Title:</label>
+      <input class="input" type="text" id="newClaimTitle" name="newClaimTitle" [(ngModel)]="newClaimTitle">
+    </div>
+    <div class="card-details-input">
+      <label for="newClaimDescription">Description:</label>
+      <textarea  class="input" type="text" id="newClaimDescription" name="newClaimDescription" [(ngModel)]="newClaimDescription"></textarea>
+    </div>
+
+    <div>
+      <button class="btn submit-btn" type="submit">Add Claim</button>
+    </div>
+  </form>
+  <button class="btn edit-btn" (click)="ifEditing()">Edit</button>
+  
+</div>
+</div>

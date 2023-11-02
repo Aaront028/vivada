@@ -1,138 +1,68 @@
 # VivadaUi
-Welcome to this repository! It's configured with a foundational template and a functional API connected to a GraphQL test dataset. The implementation includes comprehensive CRUD (Create, Read, Update, Delete) functionality with placeholder details. The codebase incorporates a basic model and ngxs setup, featuring simulated contact data, payload, and states. The app.component.html file includes a simple call to list contact names. Please note that this setup currently lacks any styling, but the essential files such as app.module.ts, graphql.module.ts, and the environment folder are all configured and ready to go.
+Welcome to this repository! This repo contains the Angular-based UI for Vivada app, a platform designed for adding claims and evidence backing toward agree or disagree. The UI is configured with an API connected to a GraphQL test dataset, offering a seamless experience with comprehensive CRUD functionality. The codebase is implemented using Angular and ngxs for state management, featuring simulated claims data, payload, and states. The `app.component.html` file includes a simple call to list claims. This README file provides all the information you need to set up and explore the project.
+
 
 # Local Setup
-Once you have cloned the repository, navigate to the project folder.
 
+
+Before proceeding, make sure you have the Angular CLI installed globally. If you haven't done so already, you can install it by running:
+```bash
+npm install -g @angular/cli
+```
+
+**Versions**
+
+- Node v18.18.0
+- NPM v9.8.1
+- Angular CLI 16.2.6
+
+1. Open a terminal.
+2. Run the following command to download and install NVM:
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+```
+3. Close and reopen your terminal, or run the following command to apply the changes:
+```bash
+source ~/.bashrc
+```
+If you're using Zsh, replace `~/.bashrc` with `~/.zshrc.`
+4. Verify that NVM is installed by running:
+```bash
+nvm --version
+```
+5. Now, you can use NVM to install different versions of Node.js. So in our case it's Node v18.18.0 run the following command:
+```bash
+nvm install 18.18.0
+```
+6. Verify that Node.js version 18.18.0 is now active by running:
+```bash
+node --version
+```
+
+Once you have cloned the repository, navigate to the project folder.
 ```bash 
 cd vivada-ui
 ```
 
 Install all dependencies, including --force.
-
 ```bash
 npm install --force
 ```
 
-
-After installing dependencies, you'll need to install and run Keycloak on Docker. If Docker is not installed, download it from [here ](https://www.docker.com/get-started/) and follow the instructions for your Operating System.
-
-To run the Keycloak server, execute the following command in the terminal. Make sure your Docker application is running!
-
-```bash
-docker run -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:22.0.4 start-dev
-```
-
-Wait for the Keycloak server to start successfully. Once running, access the administration console at http://localhost:8080/ log in with `admin` for both username and password.
-
-This will give you access to the master realm setup. Now click on the `master` dropdown menu and click on `Create Realm`. 
-
-1. For our deployment realm, we are using the name `vivada`
-
-Realm name: **vivada**
-
-Click Create, then navigate to Users and add a user named `myuser` with the desired details.
-
-Set the password in the Credentials tab, turning off Temporary.
-
-2. Setup Clients:
-
-Click on Clients on the left side menu and select Create client. You can skip `Capability config`
-```markdown
-Client ID: vivada-local
-Valid redirect URIs: http://localhost:4200/*
-Web origins: http://localhost:4200
-Click Save.
-```
-
-3. For Netlify deployment Clients repeat step 2 with Client ID as `vivada-online` and your chosen URI's and Web origins. It should look something like this.
-```markdown
-Client ID: vivada-online
-Valid redirect URIs: https://timely-salamander-2a0240.netlify.app/*
-Web origins: https://timely-salamander-2a0240.netlify.app
-Click Save.
-```
-
-These step is crucial for both local and deployment environments!
-
-You should now be setup for local environment with Keycloak installed. 
-
-```bash
-ng serve
-```
-
-Your application should be up and running with Keycloak. Congratulations!
-
 # Environment variables setup
-1. **The Environments Folder:**
-- Inside the `src` folder of your project, there is folder named `environments`.
-  - For each branch or environment, there should be corresponding `environment.ts` file.
-    - `environment.prod.ts` for the main branch (production).
-    - `environment.staging.ts` for the staging branch.
-    - `environment.local.ts` for other development branches.
 
-2. **Folder Structure:**
-  - Your folder structure should look like this:
+Create a `.env` file in the root folder of the project and add the following credentials from the Discord channel:
 
-  <pre>
-    /app
-    /model
-    /services
-    /shared
-    /state
-    /assets
-    /environments
-      - environment.prod.ts
-      - environment.staging.ts
-      - environment.local.ts
-  </pre>
-
-3. **Configure Environment Files:**
-- Create `environment.ts` file and configure the settings. This file will only be available to you on your local branch and will not be pushed to Gitlab. It will save you from re-entering credentials in order for the application to work. The file should look something like this
-
-  ```bash
-  export const environment = {
-  production: false,
-  apiUrl: 'enter_your_api_url_here',  //you can get these information from UI-dev discord channel
-  hasuraAdminSecret: 'enter_your_api_key_here', //you can get these information from UI-dev discord channel
-  realm: 'vivada',
-  clientId: 'vivada-local'
-  };
-  ```
-
-Alternatively you can create a `.env` file in the root folder of the project. Credentials are in discord channel.
-  
   ```bash
 NG_APP_API_URL='enter_your_api_url_here'
 NG_APP_HASURA_ADMIN_SECRET='enter_your_api_key_here'
   ```
 
-4. **Automatic Switching:**
-By following these steps, you'll have a well-organized environments folder with dedicated environment files for each branch.
+After setting up your environment variables, run the following command to start the development server:
 
-# Angular Environment Setup
-
-Switching branches can cause environment files to disappear, leading to setup hassles and potential accidental commits. To address this, a script has been crafted for your convenience. It automatically relocates your environment folders to match the active branch, ensuring safety from unintentional commits, thanks to entries in the gitignore file.
-
-# Set Up the Automatic Switching
-1. **Copy the Hook Script:** Copy the post-checkout hook script into your project. The script is located at .githooks/post-checkout in the root of your project.
-<pre>
-cp .githooks/post-checkout .git/hooks/post-checkout
-</pre>
-
-2. **Make the Script Executable:** Ensure that the script is executable by running the following command:
-<pre>
-chmod +x .git/hooks/post-checkout
-</pre>
-
-3. **Set Up Environment Files:** Make sure you have environment files for each branch (e.g., environment.prod.ts, environment.staging.ts, environment.dev.ts). The hook script will automatically switch the environment.ts file when changing branches.
-
-# Usage
-- When you switch to the main branch, it will use environment.prod.ts.
-- When you switch to the staging branch, it will use environment.staging.ts.
-- For other branches, it will use environment.dev.ts.
-
-Now, whenever you switch branches, the environment file will be automatically updated.
+```bash
+ng serve
+```
 
 # Netlify Deployment Environment Variables and Setup
 
@@ -188,4 +118,3 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/vivada-ui` directory.
-

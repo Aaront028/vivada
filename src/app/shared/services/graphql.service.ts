@@ -4,16 +4,15 @@ import { of,Observable } from 'rxjs';
 import { switchMap,catchError, map } from 'rxjs/operators';
 import gql from 'graphql-tag';
 import { Store } from '@ngxs/store';
-import { SetInitialContacts } from '../../state/app.actions';
+import { SetInitialClaims } from '../../state/app.actions';
 import { tap } from 'rxjs/operators';
 
 
-// Define the Contact interface
-interface Contact {
+// Define the Claim interface
+interface Claim {
   id: string;
-  name: string;
-  email: string;
-  phone: string;
+  title: string;
+  description: string;
   cursor: string; // Add this line if 'cursor' is a required field
 }
 
@@ -27,119 +26,117 @@ export class GraphqlService {
   
 
   // Example query
-  getSomeData(): Observable<{ contacts: Contact[] }> {
+  getSomeData(): Observable<{ claims: Claim[] }> {
     return this.apollo
-      .watchQuery<{ contacts: Contact[] }>({
+      .watchQuery<{ claims: Claim[] }>({
         query: gql`
-          query GetContacts {
-            contacts {
+          query GetClaims {
+            claims {
               id
-              name
-              email
-              phone
+              title
+              description
             }
           }
         `,
       })
       .valueChanges.pipe(
-        map((result) => result.data || { contacts: [] }),
+        map((result) => result.data || { claims: [] }),
         tap((data) => {
           // Dispatch an action to set the initial state
-          this.store.dispatch(new SetInitialContacts(data.contacts)); 
+          this.store.dispatch(new SetInitialClaims(data.claims)); 
         })
       );
   }
-  addContact(name: string, email: string, phone: string): Observable<Contact | undefined> {
-    // console.log('Adding contact:', { name, email, phone });
+ addClaim(title: string, description: string): Observable<Claim | undefined> {
+    console .log('Adding Claim:', { title, description});
   
     return this.apollo
-      .mutate<{ insert_contacts_one: Contact }>({
+      .mutate<{ insert_claims_one: Claim }>({
         mutation: gql`
-          mutation AddContact($name: name!, $email: String!, $phone: String!) {
-            insert_contacts_one(object: { name: $name, email: $email, phone: $phone }) {
+          mutation AddClaim($title: String!, $description: String!) {
+            insert_claims_one(object: { title: $title, description: $description}) {
               id
-              name
-              email
-              phone
+              title
+              description
             }
           }
         `,
         variables: {
-          name,
-          email,
-          phone,
+          title,
+          description,
         },
       })
       .pipe(
         map((result) => {
-          // console.log('Add result:', result);
+          console.log('Add result:', result);
   
-          const addedContact = result.data?.insert_contacts_one;
+          const addedClaim = result.data?.insert_claims_one;
   
-          if (addedContact) {
-            console.log('Contact added successfully');
+          if (addedClaim) {
+            console.log('Claim added successfully');
   
             // Trigger the subscription update
-            this.triggerContactSubscriptionUpdate();
+            this.triggerClaimSubscriptionUpdate();
   
-            return addedContact;
+            return addedClaim;
           } else {
-            // console.error('Error adding contact');
+            console.error('Error adding claim');
             return undefined;
           }
         }),
         catchError((error) => {
-          // console.error('Error in addContact:', error);
+          console.error('Error in addClaim:', error);
           return of(undefined);
         })
       );
   }
   
   
-  updateContact(updatedContact: any): Observable<Contact | undefined> {
-    console.log("Inside updatedContact", updatedContact);
+  updateClaim(updatedClaim: any): Observable<Claim | undefined> {
+    console.log("Inside updatedClaims", updatedClaim);
     return this.apollo
-      .mutate<{ updateContact: Contact }>({
+      .mutate<{ updateClaim: Claim }>({
         mutation: gql`
-          mutation UpdateTodo($id: Int!, $name: name!, $email: String! ) {
-            update_contacts(
+          mutation UpdateTodo($id: Int!, $title: String!, $description: String! ) {
+            update_claims(
               where: { id: { _eq: $id } }
-              _set: { name: $name, email: $email }
+              _set: { title: $title, description: $description }
             ) {
               affected_rows
               returning {
                 id
-                name
-                email
+                title
+                description
               }
             }
           }
         `,
         variables: {
-          id: updatedContact.id,
-          name: updatedContact.name,
-          email: updatedContact.email,
+          id: updatedClaim.id,
+          title: updatedClaim.title,
+          description: updatedClaim.description,
+
         },
       })
       .pipe(
         switchMap(() => {
           // Trigger the subscription update
-          this.triggerContactSubscriptionUpdate();
+          this.triggerClaimSubscriptionUpdate();
          
-          return this.contactSubscription();
+          return this.claimSubscription();
         }),
-        map((contacts) => contacts && contacts[0])
+        map((claims) => claims && claims[0])
       );
   }
   
-  deleteContact(contactId: string): Observable<{ id: string } | undefined> {
-    // console.log('Deleting contact with id:', contactId);
+  deleteClaim(claimId: string): Observable<{ id: string } | undefined> {
+    // console.log('Deleting claim with id:', claimId);
   
     return this.apollo
-      .mutate<{ delete_contacts: { affected_rows: number } }>({
+      .mutate<{ delete_claims: { affected_rows: number } }>({
         mutation: gql`
-          mutation DeleteContact($id: Int) {
-            delete_contacts(where: { id: { _eq: $id } }) {
+          mutation DeleteClaim($id: Int) {
+            delete_claims(where: { id: { _eq: $id } }) {
               affected_rows
               returning {
                 id
@@ -148,50 +145,49 @@ export class GraphqlService {
           }
         `,
         variables: {
-          id: parseInt(contactId, 10), // Convert to integer if needed
+          id: parseInt(claimId, 10), // Convert to integer if needed
         },
       })
       .pipe(
         map((result) => {
           console.log('Delete result:', result);
   
-          if (result.data?.delete_contacts?.affected_rows) {
-            console.log('Contact deleted successfully');
+          if (result.data?.delete_claims?.affected_rows) {
+            console.log('Claim deleted successfully');
   
             // Trigger the subscription update
-            this.triggerContactSubscriptionUpdate();
+            this.triggerClaimSubscriptionUpdate();
   
-            return { id: contactId };
+            return { id: claimId };
           } else {
-            console.error('Error deleting contact');
+            console.error('Error deleting claim');
             return undefined;
           }
         }),
         catchError((error) => {
-          console.error('Error in deleteContact:', error);
+          console.error('Error in deleteClaim:', error);
           return of(undefined);
         })
       );
   }
   
-  // Add a method to trigger contact subscription update
-  private triggerContactSubscriptionUpdate(): void {
+  // Add a method to trigger claim subscription update
+  private triggerClaimSubscriptionUpdate(): void {
     this.apollo.getClient().reFetchObservableQueries();
   }
-  contactSubscription(): Observable<Contact[]> {
+  claimSubscription(): Observable<Claim[]> {
     const initialCursor = {
       id: 0, // Set an appropriate initial value based on your data
     };
   
     return this.apollo
-      .subscribe<{ contacts_stream: Contact[] }>({
+      .subscribe<{ claims_stream: Claim[] }>({
         query: gql`
-          subscription($initialCursor: contacts_stream_cursor_value_input!) {
-            contacts_stream(batch_size: 10, cursor: { initial_value: $initialCursor, ordering: ASC }) {
+          subscription($initialCursor: claims_stream_cursor_value_input!) {
+            claims_stream(batch_size: 10, cursor: { initial_value: $initialCursor, ordering: ASC }) {
               id
-              name
-              email
-              phone
+              title
+              description
               cursor: id
             }
           }
@@ -201,7 +197,7 @@ export class GraphqlService {
         },
       })
       .pipe(
-        map((result) => result.data?.contacts_stream || []),
+        map((result) => result.data?.claims_stream || []),
         catchError((error) => {
           console.error('Subscription error:', error);
           return of([]);
@@ -212,8 +208,8 @@ export class GraphqlService {
   
   
 
-  // Method to trigger contact subscription update
+  // Method to trigger claim subscription update
   triggerUpdate(): void {
-    this.triggerContactSubscriptionUpdate();
+    this.triggerClaimSubscriptionUpdate();
   }
 }
