@@ -11,12 +11,9 @@ export class TranslatePipe implements PipeTransform {
 
   transform(key: string): string {
     const currentLanguage = this.languageService.getCurrentLanguage();
-    console.log('TranslatePipe - Current Language:', currentLanguage);
 
     const translations = this.languageService.getTranslations(currentLanguage);
-    console.log('TranslatePipe - Translations:', translations);
 
-    console.log('TranslatePipe - Key:', key);
 
     return translations[key] || key;
   }

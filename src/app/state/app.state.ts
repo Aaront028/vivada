@@ -1,41 +1,42 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
-import { UpdateContact } from './app.actions';
-import { Contact } from '../shared/model/contact.model';
+import { UpdateClaim } from './app.actions';
+import { Claim } from '../shared/model/claim.model';
 
 export class AppStateModel {
-  contacts: Contact[] =[];
+  claims: Claim[] =[];
 }
 
 @State<AppStateModel>({
   name: 'app',
   defaults: {
-    contacts: [],
+    claims: [],
   },
 })
 export class AppState {
-  @Action(UpdateContact)
-  updateContact(ctx: StateContext<AppStateModel>, action: UpdateContact) {
-    console.log('UpdateContact Action Dispatched', action.payload);
+  @Action(UpdateClaim)
+  updateClaim(ctx: StateContext<AppStateModel>, action: UpdateClaim) {
+    console.log('UpdateClaim Action Dispatched', action.payload);
 
     const state = ctx.getState();
-    const updatedContact = action.payload;
+    const updatedClaim = action.payload;
 
-    console.log("updatedContacts", updatedContact);
-    // Find the index of the contact to update by comparing ids
-    const index = state.contacts.findIndex(c => c.id === updatedContact.id);
+    console.log("updatedClaims HERE", updatedClaim);
+    // Find the index of the claim to update by comparing ids
+    const index = state.claims.findIndex(c => c.id === updatedClaim.id);
     if (index !== -1) {
-        // Update the contact in the array
-        const updatedContacts = [...state.contacts];
-        updatedContacts[index] = updatedContact;
+      console.log("updatedClaims IF STATEMENT", updatedClaim);
+        // Update the claim in the array
+        const updatedClaims = [...state.claims];
+        updatedClaims[index] = updatedClaim;
 
-        // Update the state with the new contacts array
+        // Update the state with the new claims array
         ctx.patchState({
-            contacts: updatedContacts,
+            claims: updatedClaims,
         });
 
-        console.log('Contact updated. New state:', ctx.getState());
+        console.log('Claim updated. New state:', ctx.getState());
     } else {
-        console.error('Contact not found for update. State:', state, 'Contact:', updatedContact);
+        console.error('Claim not found for update. State:', state, 'Claim:', updatedClaim);
     }
 }
 

@@ -8,7 +8,7 @@ interface Translations {
 
 async function translateFiles() {
   const baseFilePath = path.join(__dirname, 'en.json');
-  const targetLanguages = ['hi', 'nl', 'es'];
+  const targetLanguages = ['hi', 'es', 'ja', 'es', 'fr', 'de', 'pt', 'ru', 'zh-CN', 'ar'];
 
   if (!fs.existsSync(baseFilePath)) {
     console.error(`Error: File 'en.json' not found at path ${baseFilePath}`);

@@ -1,0 +1,62 @@
+.claim-name {
+  margin: 20px 0;
+}
+
+.selected {
+  color: #CAEDFF;
+}
+
+.btn {
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 5px;
+  color:#fff;
+  margin-right:5px;
+}
+
+.submit-btn {
+  background-color: #CAEDFF;
+  color: black;
+}
+.edit-btn {
+  background-color: #FFC7EA;
+  color: black;
+}
+
+.add-new-claim-btn {
+  background-color: #FBF0B2;
+  color: black;
+}
+
+.fa-trash {
+  color: #FFC7EA;
+}
+
+.card-details-input {
+  margin: 5px 0;
+}
+
+.input {
+  width: 100%;;
+}
+
+
+@media only screen and (max-width: 600px) {
+  /* Styles for small screens go here */
+  .claim-name {
+    margin: 10px 0;  /* Reduce margin for better spacing on small screens */
+  }
+  
+  .btn {
+    padding: 8px;  /* Increase padding for better touch interaction on small screens */
+  }
+  
+  .card-details-input {
+    margin: 10px 0;  /* Adjust margin for better spacing on small screens */
+  }
+  
+  .input {
+    width: calc(100% - 10px);  /* Adjust width and consider box-sizing for padding */
+    padding: 5px;  /* Add padding for better input styling on small screens */
+  }
+}

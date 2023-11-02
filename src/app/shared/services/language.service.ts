@@ -13,7 +13,10 @@ export class LanguageService {
   // Translations will be loaded dynamically from external files
   private translations: Record<string, Record<string, string>> = {};
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    // Call the initialize method when the service is constructed
+    this.initialize();
+  }
 
   getCurrentLanguage(): string {
     return this.currentLanguageSubject.value;
@@ -39,5 +42,11 @@ export class LanguageService {
         console.error(`Failed to load translations: ${error}`);
       }
     );
+  }
+
+  // New method to initialize translations based on the default language
+  private initialize() {
+    const defaultLanguage = 'en'; // Set your default language here
+    this.loadTranslations(defaultLanguage);
   }
 }

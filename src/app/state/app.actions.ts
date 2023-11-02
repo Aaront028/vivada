@@ -1,21 +1,21 @@
-import { Contact } from '../shared/model/contact.model';
+import { Claim } from '../shared/model/claim.model';
 
-export class SetInitialContacts {
-  static readonly type = '[App] Set Initial Contacts';
-  constructor(public payload: Contact[]) {}
+export class SetInitialClaims {
+  static readonly type = '[App] Set Initial Claim';
+  constructor(public payload: Claim[]) {}
 }
 
-export class AddContact {
-  static readonly type = '[App] Add Contact';
-  constructor(public payload: Contact) {}
+export class AddClaim {
+  static readonly type = '[App] Add Claim';
+  constructor(public payload: Claim) {}
 }
 
-export class EditContact {
-  static readonly type = '[App] Edit Contact';
-  constructor(public payload: Contact) {}
+export class EditClaim {
+  static readonly type = '[App] Edit Claim';
+  constructor(public payload: Claim) {}
 }
 
-export class UpdateContact {
-  static readonly type = '[Contact] Update';
-  constructor(public payload: Contact) {}
+export class UpdateClaim {
+  static readonly type = '[Claim] Update';
+  constructor(public payload: Claim) {}
 }

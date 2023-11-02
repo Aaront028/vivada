@@ -1,0 +1,23 @@
+.card-details {
+  margin-left: 25px;
+  border: 2px solid #CAEDFF;
+  border-radius: 5px;
+  padding: 10px;
+  line-height: 1.5;
+
+  @media (max-width: 768px) {
+    margin-left: 0; /* Adjust margin for smaller screens */
+    border: 1px solid #CAEDFF; /* Reduce border thickness for smaller screens */
+    padding: 8px; /* Reduce padding for smaller screens */
+  }
+
+  &-title {
+    margin-bottom: 10px;
+  }
+
+  &-title {
+    margin-bottom: 10px;
+  }
+
+}
+
