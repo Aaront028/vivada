@@ -23,18 +23,21 @@ interface Claim {
 export class GraphqlService {
   constructor(private apollo: Apollo, private store: Store) {}
 
-  
 
-  // Example query
   getSomeData(): Observable<{ claims: Claim[] }> {
     return this.apollo
       .watchQuery<{ claims: Claim[] }>({
         query: gql`
-          query GetClaims {
-            claims {
+          {
+            allClaims{
               id
-              title
-              description
+              statement
+              circle {
+                title
+              }
+              author {
+                username
+              }
             }
           }
         `,
@@ -47,6 +50,27 @@ export class GraphqlService {
         })
       );
   }
+  // getSomeData(): Observable<{ claims: Claim[] }> {
+  //   return this.apollo
+  //     .watchQuery<{ claims: Claim[] }>({
+  //       query: gql`
+  //         query GetClaims {
+  //           claims {
+  //             id
+  //             title
+  //             description
+  //           }
+  //         }
+  //       `,
+  //     })
+  //     .valueChanges.pipe(
+  //       map((result) => result.data || { claims: [] }),
+  //       tap((data) => {
+  //         // Dispatch an action to set the initial state
+  //         this.store.dispatch(new SetInitialClaims(data.claims)); 
+  //       })
+  //     );
+  // }
  addClaim(title: string, description: string): Observable<Claim | undefined> {
     console .log('Adding Claim:', { title, description});
   

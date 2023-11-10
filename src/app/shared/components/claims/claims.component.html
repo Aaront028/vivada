@@ -9,15 +9,15 @@
   <p>{{ 'description' | translate }}</p>
 </div>
 <div class="card" *ngIf="data$ | async as data">
-  <div *ngFor="let claim of data.claims" class="claim-container" style="cursor: pointer;">
+  <div *ngFor="let claim of data.allClaims" class="claim-container" style="cursor: pointer;">
     <h2 class="claim-name" (click)="toggleDetails(claim)" [class.selected]="claim === selectedClaim && !isEditing">
       <button (click)="deleteClaim(claim.id)" *ngIf="isEditing" class="btn delete-claim">
         <i class="fa-solid fa-trash"></i>
       </button>
-      {{ claim.title }}
-    </h2>
+      {{ claim.statement }}
+   </h2>
 
-    <app-claim-details *ngIf="claim === selectedClaim" [claim]="selectedClaim!" [isEditing]="isEditing"  (claimUpdated)="updateClaim($event)"></app-claim-details>
+    <app-claim-details *ngIf="claim === selectedClaim" [claim]="selectedClaim!" [isEditing]="isEditing"  [circle]="claim" (claimUpdated)="updateClaim($event)"></app-claim-details>
   </div>
 
 

@@ -28,6 +28,7 @@ export class ClaimDetailsComponent {
   
   constructor(private store: Store) {}
   @Input() claim: Claim = new Claim('', '', '');
+  @Input() circle: any;
   @Select(AppState) appState$: Observable<AppStateModel> | undefined;
   @Output() claimUpdated = new EventEmitter<Claim>();
 
@@ -96,4 +97,13 @@ export class ClaimDetailsComponent {
   }
   
   
+  getCircleTitle(circle: any): string {
+    try {
+      const parsedCircle = JSON.parse(circle.title);
+      return parsedCircle.label;
+    } catch (error) {
+      console.error('Error parsing circle title:', error);
+      return '';
+    }
+  }
 }

@@ -4,21 +4,17 @@ import { HttpLink } from 'apollo-angular/http';
 import { ApolloClientOptions, InMemoryCache, split } from '@apollo/client/core';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
-import { HttpHeaders } from '@angular/common/http';
 import { environment } from '../environments/environment';
 
 
 const uri = environment.apiUrl;
-const adminSecret = environment.hasuraAdminSecret;
+
 environment.testMessage && console.log(environment.testMessage);
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
-  // Create HttpHeaders
-  const headers = new HttpHeaders().set("x-hasura-admin-secret", adminSecret || '');
-  // HTTP Link
+
   const http = httpLink.create({
     uri,
-    headers,
   });
 
   // WebSocket Link
@@ -27,9 +23,7 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     options: {
       reconnect: true,
       connectionParams: {
-        headers: {
-          'x-hasura-admin-secret': adminSecret,
-        },
+
       },
     },
   });

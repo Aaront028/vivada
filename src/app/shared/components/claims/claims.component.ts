@@ -46,6 +46,7 @@ export class ClaimsComponent {
       next: (data) => {
         // Handle the updated data, e.g., update your claims list
         this.claims = data;
+        console.log("this is claims",this.claims);
       },
       error: (error) => {
         console.error('Subscription error:', error);
@@ -53,7 +54,7 @@ export class ClaimsComponent {
     });
     
   }
-
+  
   toggleDetails(claim: Claim): void {
     console.log('Selected Claim:', claim);
     

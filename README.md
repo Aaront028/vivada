@@ -40,7 +40,7 @@ node --version
 ```
 
 Once you have cloned the repository, navigate to the project folder.
-```bash 
+```bash
 cd vivada-ui
 ```
 
@@ -55,7 +55,6 @@ Create a `.env` file in the root folder of the project and add the following cre
 
   ```bash
 NG_APP_API_URL='enter_your_api_url_here'
-NG_APP_HASURA_ADMIN_SECRET='enter_your_api_key_here'
   ```
 
 After setting up your environment variables, run the following command to start the development server:
@@ -82,12 +81,11 @@ To set up Netlify variables, follow these steps in the Netlify UI:
 You can import these variables into netlify's .env
 ```markdown
 NG_APP_API_URL: 'enter_your_api_url_here'
-NG_APP_HASURA_ADMIN_SECRET: 'enter_your_api_key_here'
 NODE_VERSION: 18
 NPM_FLAGS: --force
 ```
 
-Our api url and api key is in the UI-dev channel on discord. 
+Our api url and api key is in the UI-dev channel on discord.
 
 # Language translation script (Optional)
 
